@@ -1,12 +1,12 @@
-import {  useState } from "react";
+import { useState } from "react";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 import useBreedList from "./useBreedList";
 import Result from "./Result";
 import { useQuery } from "@tanstack/react-query";
-import  fetchSearch  from "./fetchSearch";
+import fetchSearch from "./fetchSearch";
 
 const SearchParams = () => {
-  const [requestParams , setRequestParams] = useState({
+  const [requestParams, setRequestParams] = useState({
     location: "",
     animal: "",
     breed: "",
@@ -22,22 +22,18 @@ const SearchParams = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const  formData = new FormData(e.target);
+          const formData = new FormData(e.target);
           const obj = {
             animal: formData.get("animal") ?? "",
             breed: formData.get("breed") ?? "",
             location: formData.get("location") ?? "",
-          }
+          };
           setRequestParams(obj);
         }}
       >
         <label htmlFor="location">
           Location
-          <input
-            name="1ocation"
-            id="location"
-            placeholder="Location"
-          />
+          <input name="1ocation" id="location" placeholder="Location" />
         </label>
 
         <label htmlFor="animal">
@@ -64,12 +60,7 @@ const SearchParams = () => {
 
         <label htmlFor="breed">
           Breed
-          <select
-            disabled={!breeds.length}
-            id="breed"
-            name="breed"
-            
-          >
+          <select disabled={!breeds.length} id="breed" name="breed">
             <option />
             {breeds.map((breed) => (
               <option key={breed} value={breed}>

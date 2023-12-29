@@ -14,27 +14,26 @@ const queryClient = new QueryClient({
   },
 });
 
-
-
 const App = () => {
   return (
     <div>
-        <header>
-          <Link to={"/"}>Adopt Me!</Link>
-        </header>
-        <QueryClientProvider client={queryClient}>
-          <Routes>
-            <Route path={"/"} element={<SearchParams />} />
-            <Route path={"/details/:id"} element={<Details />} />
-          </Routes>
-        </QueryClientProvider>
+      <header>
+        <Link to={"/"}>Adopt Me!</Link>
+      </header>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path={"/"} element={<SearchParams />} />
+          <Route path={"/details/:id"} element={<Details />} />
+        </Routes>
+      </QueryClientProvider>
     </div>
   );
 };
 
-
 const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<BrowserRouter>
-  <App />
-</BrowserRouter>);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+);
